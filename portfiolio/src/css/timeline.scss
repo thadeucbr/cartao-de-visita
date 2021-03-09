@@ -1,63 +1,70 @@
 /* Media Queries */
-
 @mixin mq-xs {
   @media (min-width: 320px) {
     @content;
   }
 }
-
 @mixin mq-sm {
   @media (min-width: 480px) {
     @content;
   }
 }
-
 @mixin mq-md {
   @media (min-width: 720px) {
     @content;
   }
 }
-
 @mixin mq-lg {
   @media (min-width: 1000px) {
     @content;
   }
 }
-
-$background: #f7f7f7;
+$background: #57b2dd;
 $box-shadow: 0px 1px 22px 4px rgba(0, 0, 0, 0.07);
 $border: 1px solid rgba(191, 191, 191, 0.4);
-$items: 8;
+$items: 7;
 $rows: ceil($items/2);
-
 /* Card sizing */
-
 $card-height: 400px;
-$card-width: 450px;
+$card-width: 465px;
 $inner-margin: 15px;
-$number-size: 35px;
+$number-size: 20px;
 $stagger: 180px;
-$outer-margin: 90px;
-$marker-size: 9px;
-
+$outer-margin: 60px;
+$marker-size: 10px;
 /* Colors */
-
 $steps: #46b8e9;
 $colors: #46b8e9,
 #3ee9d1,
 #ce43eb,
 #4d92eb;
 $timeline: #bdbdbd;
-
 /* Calculations */
-
 $container-height: $rows * ($card-height + $outer-margin) + $stagger;
 $container-width: $card-width*2 + $outer-margin*3;
 $head-height: $number-size + 50;
 $body-height: $card-height - $head-height;
 $marker-dist: $card-width + $outer-margin/2 - $marker-size/2;
-
 /* Placeholders */
+ /* CARDSSSSS */
+.demo-card--step1 {
+  img  {
+    -moz-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+  }
+
+  &:hover img {
+    border-radius: 5%;
+    border-width: 1px;
+    border-style: ridge;
+    border-color: #3ee9d1;
+    -moz-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    /* TAMANHO DOS CARDS */
+    transform: scale(1.2);
+  }
+}
 
 @include mq-lg {
   %arrow {
@@ -78,29 +85,21 @@ $marker-dist: $card-width + $outer-margin/2 - $marker-size/2;
     box-shadow: 0px 0px 2px 8px $background;
   }
 }
-
-
 /* Some Cool Stuff */
-
 $counter: $items - $rows + 2;
 @for $i from 1 through $rows {
   .demo-card:nth-child(#{$i*2-1})   { order: $i }
   .demo-card:nth-child(#{$i*2})     { order: $counter }
   $counter: $counter + 1;
 }
-
 /* Border Box */
-
 * {
   box-sizing: border-box;
 }
-
 /* Fonts */
-
 body {
   font-family: Roboto;
 }
-
 #timeline {
   padding: 100px 0;
   background: $background;
@@ -111,6 +110,7 @@ body {
     font-size: 3rem;
     font-weight: 200;
     margin-bottom: 20px;
+    color:black
   }
   p.leader {
     text-align: center;
