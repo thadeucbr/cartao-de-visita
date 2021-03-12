@@ -43,10 +43,10 @@ const MenuZ = (props) => {
   const history = useHistory();
 
   const rotasClick = [
-    '/timeline',
-    '/sobre',
-    '/contato',
-    '/projetos',
+    '#timeline',
+    '#sobre',
+    '#contato',
+    '#projetos',
     'Linkedin',
     'Github',
   ];
@@ -55,12 +55,11 @@ const MenuZ = (props) => {
     const vaiparala = (caminho) => {
       switch (caminho) {
         case 'Linkedin':
-          return (window.location.href = 'https://www.linkedin.com/feed/');
+          return (window.open('https://www.linkedin.com/feed/', '_blank'));
         case 'Github':
-          return (window.location.href = 'https://github.com/');
+          return (window.open('https://github.com/', '_blank'));
         default:
-          break
-          //history.push(`${caminho}`);
+          return window.location.href = caminho;
       }
     };
     const handleClick = (e) => {

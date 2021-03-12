@@ -5,7 +5,9 @@ $boxShadow: 0px 0px 24px 6px rgba(black, 0.08);
 @function gray($color){
   @return rgb($color, $color, $color);
 }
-
+html {
+  scroll-behavior: smooth;
+}
 html,
 body,
 #app{  
