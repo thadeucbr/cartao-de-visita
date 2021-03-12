@@ -2,6 +2,17 @@ import React from 'react';
 import ContextMenuItem from './ContextMenuItem';
 import { useHistory } from 'react-router-dom';
 import { dom } from '@fortawesome/fontawesome-svg-core';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab  } from '@fortawesome/free-brands-svg-icons'
+import { far  } from '@fortawesome/free-regular-svg-icons'
+import { fas  } from '@fortawesome/free-solid-svg-icons'
+import Fundo from './Fundo';
+
+library.add(
+  fab,
+  fas,
+  far,
+)
 dom.watch();
 
 const MenuZ = (props) => {
@@ -21,8 +32,8 @@ const MenuZ = (props) => {
   }, []);
   React.useEffect(() => {
     setContextMenuItems([
-      { name: 'Timeline', icon: 'fab fa-algolia fa-3x' },
-      { name: 'Sobre', icon: 'fab fa-jenkins fa-3x' },
+      { name: 'Timeline', icon: 'far fa-clock fa-3x' },
+      { name: 'Sobre', icon: 'fas fa-user-circle fa-3x' },
       { name: 'Contato', icon: 'fab fa-whatsapp fa-3x' },
       { name: 'Projetos', icon: 'fab fa-fort-awesome-alt fa-3x' },
       { name: 'Linkedin', icon: 'fab fa-linkedin-in fa-2x' },
@@ -48,7 +59,8 @@ const MenuZ = (props) => {
         case 'Github':
           return (window.location.href = 'https://github.com/');
         default:
-          return history.push(`${caminho}`);
+          break
+          //history.push(`${caminho}`);
       }
     };
     const handleClick = (e) => {
@@ -122,17 +134,18 @@ const MenuZ = (props) => {
   return React.createElement(
     'div',
     { id: 'app', onContextMenu: handleOnContextMenu },
+    <Fundo/>,
     getContextMenuItems(),
-    React.createElement(
-      'div',
-      { id: 'instructions' },
       React.createElement(
-        'h1',
-        null,
-        'Aperte o botão direito para abrir a navegação, e o esquerdo para fechar',
-        <i class="fas fa-book"></i>
+        'div',
+        { id: 'instructions' },
+        React.createElement(
+          'h1',
+          null,
+          'Aperte o botão direito para abrir a navegação, e o esquerdo para fechar'
+        )
       )
-    )
+    
   );
 };
 
